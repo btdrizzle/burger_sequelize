@@ -1,0 +1,49 @@
+<h1 class="display-3 text-center col-10 mb-4 mx-auto text-white font-weight-bold">Feed Me a Burger, Seymore!</h1>
+<div class="container-fluid col-10">
+    <div class="container imageDiv">
+        <img src="assets/img/burger.png" id="burgerPic" class="img-fluid text-center mb-4">
+    </div>
+    <div class="col-10 mx-auto">
+        <h2 class="text-center text-white">Add a Burger!!</h2>
+        <form class="create-form mb-4">
+            <div class="form-group">
+                <label for="addBurger"></label>
+                <textarea class="form-control" type="text" id="addBurger" name="burgerName" rows="3" placeholder="Type a burger name and submit to add a burger..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-light">Add a Burger!</button>
+        </form>
+    </div>
+    <div class="row mb-4">
+        <div class="col-6">
+            <h2 class="display-5 text-center text-white">Burgers Ready to be Devoured</h2>
+            <div class="theBurgers">
+            {{#each burgers}}
+                {{#unless devoured}}
+                <p class="mb-3">
+                    {{burger_name}} <button class="devour float-right btn btn-light" data-id="{{id}}">Devour Burger!</button>
+                </p>
+                {{/unless}}
+            {{/each}}
+            </div>
+        </div>
+        <div class="col-6">
+            <h2 class="display-5 text-center text-white">Burgers - The Faithfully Departed</h2>
+            <div class="theBurgers">
+                {{#each burgers}}
+                    {{#if devoured}}
+                    <p class="mb-1">
+                        {{burger_name}}
+                    </p>
+                    {{/if}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="assets/js/burgers.js"></script>

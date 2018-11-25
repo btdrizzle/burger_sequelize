@@ -1,0 +1,1 @@
+INSERT INTO burgers (burger_name) VALUES ("double bacon cheeseburger"),("the Girth Burger"),("grilled onion burger");
