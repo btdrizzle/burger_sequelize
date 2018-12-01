@@ -1,6 +1,8 @@
 const express = require('express');
-const path = require('path');
 require('dotenv').config();
+var db = require("./models");
+const path = require('path');
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,10 +18,12 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
-var routes = require("./controllers/burgers_controller.js");
+var router = require("./controllers/burgers_controller.js");
 
-app.use(routes);
+app.use(router);
 
-app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
+db.sequelize.sync().then(function() {
+    app.listen(PORT, function() {
+      console.log("App listening on PORT " + PORT);
+    });
 });
